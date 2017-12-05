@@ -1,0 +1,30 @@
+﻿
+<div class="panel">
+    <div class="form-inline">
+        <div class="form-group">
+            <div class="col-md-8">
+                <input class="form-control" [(ngModel)]="nameApp" placeholder="Application Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="btn btn-default" (click)="searchApplication(nameApp)">Search</button>
+            </div>
+        </div>
+        <div><dropdown [listOfCategories]="dropdownValues" (select)="searchCategory($event)"></dropdown></div>
+    </div>
+</div>
+<table class="table table-striped" *ngIf="applications">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let application of applications">
+            <td>{{ application.name }}</td>
+            <td>{{ application.category.name }}</td>
+        </tr>
+    </tbody>
+</table>
